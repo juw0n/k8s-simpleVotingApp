@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: vote
+  name: db
+  labels:
+    name: db-service
+spec:
+  selector:
+    name: db-deployment
+    app: voting-app
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432

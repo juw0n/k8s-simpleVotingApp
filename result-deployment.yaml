@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: vote
+  name: result-deployment
+  labels:
+    name: resulting-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: voting-app
+  template:
+    metadata:
+      labels:
+        app: voting-app
+    spec:
+      containers:
+      - name: result-app
+        image: kodekloud/examplevotingapp_result:before
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
